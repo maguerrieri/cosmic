@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    let playlistURL: URL?
+
     var body: some View {
         HSplitView {
             ConfessionsView()
 
             VSplitView {
-                PlaylistView()
+                PlaylistView(url: playlistURL)
 
                 PlaylistQRCodeView()
             }
@@ -22,5 +24,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(playlistURL: .init(string: "https://google.com"))
 }
