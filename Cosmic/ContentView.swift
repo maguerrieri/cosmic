@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     let playlistURL: URL?
+    let partyCode: String
 
     var body: some View {
         HSplitView {
@@ -17,12 +18,13 @@ struct ContentView: View {
             VSplitView {
                 PlaylistView(url: playlistURL)
 
-                PlaylistQRCodeView()
+                PlaylistQRCodeView(partyCode: partyCode)
             }
         }
     }
 }
 
 #Preview {
-    ContentView(playlistURL: .init(string: "https://google.com"))
+    ContentView(playlistURL: .init(string: "https://google.com"),
+                partyCode: "")
 }
