@@ -21,6 +21,7 @@ struct ContentView: View {
                 PlaylistQRCodeView(partyCode: partyCode)
             }
         }
+        .background { Starfield(count: 350) }
     }
 }
 
