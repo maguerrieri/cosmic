@@ -14,10 +14,17 @@ struct CosmicApp: App {
 
     @AppStorage("partyCode") private var partyCode = ""
 
+    @AppStorage("confessionResponsesURL") private var confessionResponsesURLString = ""
+    private var confessionResponsesURL: URL? { .init(string: confessionResponsesURLString) }
+
+    @AppStorage("confessionFormURL") private var confessionFormURLString = ""
+
     var body: some Scene {
         WindowGroup {
             ContentView(playlistURL: playlistURL,
-                        partyCode: partyCode)
+                        playlistPartyCode: partyCode,
+                        confessionsResponsesURL: confessionResponsesURL,
+                        confessionsFormURL: confessionFormURLString)
         }
 
         Settings {
@@ -25,6 +32,11 @@ struct CosmicApp: App {
                 Section {
                     TextField("Playlist URL", text: $playlistURLString)
                     TextField("Party code", text: $partyCode)
+                }
+
+                Section {
+                    TextField("Confessions responses URL", text: $confessionResponsesURLString)
+                    TextField("Confessions form URL", text: $confessionFormURLString)
                 }
             }
             .padding()

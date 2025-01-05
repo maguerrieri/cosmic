@@ -9,23 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     let playlistURL: URL?
-    let partyCode: String
+    let playlistPartyCode: String
+
+    let confessionsResponsesURL: URL?
+    let confessionsFormURL: String
 
     var body: some View {
         HSplitView {
-            ConfessionsView()
+            ConfessionsView(responsesURL: confessionsResponsesURL)
+                .background { Starfield(count: 200) }
 
             VSplitView {
                 PlaylistView(url: playlistURL)
 
-                PlaylistQRCodeView(partyCode: partyCode)
+                HStack {
+                    QRCodeView(data: confessionsFormURL) {
+                        Text("Submit your own light or dark confessions!")
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
+                    }
+
+                    Spacer(minLength: 100)
+
+                    QRCodeView(data: "https://festify.us/\(playlistPartyCode)") {
+                        Text("Scan to add songs to the playlist!")
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
+                    }
+                }
+                .background { Starfield() }
             }
         }
-        .background { Starfield(count: 350) }
     }
 }
 
 #Preview {
     ContentView(playlistURL: .init(string: "https://google.com"),
-                partyCode: "")
+                playlistPartyCode: "",
+                confessionsResponsesURL: .init(string: "https://google.com")!,
+                confessionsFormURL: "test")
 }

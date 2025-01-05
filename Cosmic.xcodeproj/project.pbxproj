@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		ACCDF0C62D24E7D100C8E60A /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = ACCDF0C52D24E7D100C8E60A /* CodableCSV */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AC9C69462D235DC900755C62 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACCDF0C62D24E7D100C8E60A /* CodableCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = Cosmic;
 			packageProductDependencies = (
+				ACCDF0C52D24E7D100C8E60A /* CodableCSV */,
 			);
 			productName = Cosmic;
 			productReference = AC9C69342D235DC800755C62 /* Cosmic.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = AC9C692B2D235DC800755C62;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				ACCDF0C42D24E7D100C8E60A /* XCRemoteSwiftPackageReference "CodableCSV" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AC9C69352D235DC800755C62 /* Products */;
 			projectDirPath = "";
@@ -591,6 +600,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ACCDF0C42D24E7D100C8E60A /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:dehesa/CodableCSV.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.6.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ACCDF0C52D24E7D100C8E60A /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACCDF0C42D24E7D100C8E60A /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC9C692C2D235DC800755C62 /* Project object */;
 }

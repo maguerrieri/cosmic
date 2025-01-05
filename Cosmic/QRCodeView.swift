@@ -1,5 +1,5 @@
 //
-//  PlaylistQRCodeView.swift
+//  QRCodeView.swift
 //  Cosmic
 //
 //  Created by Mario Guerrieri on 12/30/24.
@@ -8,13 +8,14 @@
 import SwiftUI
 import CoreImage.CIFilterBuiltins
 
-struct PlaylistQRCodeView: View {
-    let partyCode: String
+struct QRCodeView<Content: View>: View {
+    let data: String
+    @ViewBuilder let content: () -> Content
 
     private let context = CIContext()
     private let filter = CIFilter.qrCodeGenerator()
     private var qrCodeImage: NSImage? {
-        filter.message = Data("https://festify.us/\(partyCode)".utf8)
+        filter.message = Data(data.utf8)
 
         if let outputImage = filter.outputImage {
             let rep = NSCIImageRep(ciImage: outputImage)
@@ -41,13 +42,16 @@ struct PlaylistQRCodeView: View {
                            maxHeight: .infinity)
             }
 
-            Text("Scan to add songs to the playlist!")
-                .font(.title2)
+            content()
         }
         .padding()
+        .frame(minWidth: 200, maxWidth: .infinity, minHeight: 200, maxHeight: .infinity)
     }
 }
 
 #Preview {
-    PlaylistQRCodeView(partyCode: "")
+    QRCodeView(data: "") {
+        Text("Scan to add songs to the playlist!")
+            .font(.title2)
+    }
 }
